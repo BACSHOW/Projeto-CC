@@ -4,8 +4,10 @@ const result = document.getElementById("result");
 
 // Obter taxas de parcelamento ao carregar a página
 async function fetchFees() {
-  const response = await fetch("https://projeto-cc.vercel.app/api/fees"); // Alterado para domínio de produção
+  const response = await fetch("https://projeto-cc.vercel.app/api/fees"); // URL de produção
   const fees = await response.json();
+
+  console.log(fees); // Adicionar log para verificar a estrutura dos dados
 
   // Adicionar opções de parcelamento ao select
   installmentsSelect.innerHTML = "";
@@ -28,9 +30,11 @@ form.addEventListener("submit", async (e) => {
   const taxa = parseFloat(
     installmentsSelect.options[installmentsSelect.selectedIndex].textContent.split(": ")[1].replace("%", "")
   );
+  console.log("Taxa selecionada: ", taxa); // Verificar valor da taxa
+  
   const amount = parseFloat(document.getElementById("amount").value);
-
   const total = amount + (amount * taxa) / 100;
+  console.log("Total calculado: ", total); // Verificar cálculo do total
 
   const paymentData = {
     client: {
@@ -54,6 +58,7 @@ form.addEventListener("submit", async (e) => {
   });
 
   const resultData = await response.json();
+  console.log("Resposta da API de pagamento:", resultData); // Verificar resposta do pagamento
   result.textContent = JSON.stringify(resultData, null, 2);
 });
 
