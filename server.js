@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000; // Usar a porta do ambiente de produção
 
 // Middleware
 const corsOptions = {
-  origin: "http://localhost:3000",  // Altere para o seu domínio de produção
+  origin: "https://projeto-cc.vercel.app",  // Alterado para o domínio de produção do Vercel
   methods: "GET,POST",
 };
 app.use(cors(corsOptions));

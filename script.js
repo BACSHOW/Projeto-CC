@@ -4,7 +4,7 @@ const result = document.getElementById("result");
 
 // Obter taxas de parcelamento ao carregar a página
 async function fetchFees() {
-  const response = await fetch("https://localhost:3000/api/fees"); // Alterado para domínio de produção
+  const response = await fetch("https://projeto-cc.vercel.app/api/fees"); // Alterado para domínio de produção
   const fees = await response.json();
 
   // Adicionar opções de parcelamento ao select
@@ -47,7 +47,7 @@ form.addEventListener("submit", async (e) => {
     },
   };
 
-  const response = await fetch("https://localhost:3000/api/pay", {  // Alterado para domínio de produção
+  const response = await fetch("https://projeto-cc.vercel.app/api/pay", {  // Alterado para domínio de produção
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(paymentData),
